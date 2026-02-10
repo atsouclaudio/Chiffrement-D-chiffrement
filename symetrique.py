@@ -1,5 +1,9 @@
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QComboBox, QSpacerItem, QSizePolicy
+# SymWindow.py
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QComboBox, QPushButton
 from PySide6.QtCore import Qt
+
+# Import de ta fenêtre César
+from cesar import CesarWindow  
 
 class SymWindow(QWidget):
     def __init__(self):
@@ -10,7 +14,6 @@ class SymWindow(QWidget):
 
         layout = QVBoxLayout(self)
 
-        # Ajout d'un espace flexible en haut
         layout.addStretch()
 
         header = QLabel("Choisissez un algorithme symétrique")
@@ -20,20 +23,27 @@ class SymWindow(QWidget):
 
         self.combo = QComboBox()
         self.combo.addItems(["César", "AES", "DES"])
-        self.combo.setStyleSheet("""
-            QComboBox {
-                border: 1px solid #AB47BC;
-                border-radius: 10px;
-                padding: 8px;
-                background: white;
-                font-size: 14px;
-            }
-            QComboBox:hover {
-                border: 1px solid #7E57C2;
-            }
-        """)
         layout.addWidget(self.combo, alignment=Qt.AlignCenter)
 
-        # Ajout d'un espace flexible en bas
+        self.button = QPushButton("Valider")
+        self.button.clicked.connect(self.on_validate)
+        layout.addWidget(self.button, alignment=Qt.AlignCenter)
 
         layout.addStretch()
+
+    def on_validate(self):
+        choix = self.combo.currentText()
+        if choix == "César":
+            self.page = CesarWindow()   # Ouvre la fenêtre César
+        else:
+            # Ici tu peux créer AESWindow ou DESWindow si tu les as
+            # Exemple :
+            # self.page = AESWindow()
+            # ou self.page = DESWindow()
+            #print(f"Fenêtre pour {choix} pas encore définie")
+            if choix == "AES":
+                self.page = AESWindow()  # Assure-toi d'avoir une classe AESWindow définieg
+            return
+
+        self.page.show()
+        self.close()  # ferme la fenêtre actuelle pour basculer

@@ -12,6 +12,6 @@ III/ Vous allez dans le bon dossier si vous n'y êtes pas déjà.
 .Vous allez dans le deuxième Backend "cd Backend" puis maintenant vous
 créer les tables nécessaires dans la base de données  avec "python manage.py migrate"
 .Demarer le serveur avec "python manage.py runserver"
-.Laisse le serveur demaré puis dans un autre terminal ouvre ton dossier et errête toi au repertoire Chiffrement-D-chiffrement si je peux le dire ainsi . 
+.Laisse le serveur demaré puis dans un autre terminal ouvre ton dossier et arrête toi au repertoire Chiffrement-D-chiffrement si je peux le dire ainsi . 
 Active l'environnement virtuel "NomDelaVenv\Scripts\activate"
 Puis lance Dashboard avec "python Dashboard.py" 🙂‍↕️ C'est fini 
