@@ -18,7 +18,7 @@ class StyledCard(QFrame):
         shadow.setColor(QColor(0, 0, 0, 30))
         self.setGraphicsEffect(shadow)
 
-class MainWindow(QWidget):
+class CesarWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Chiffrement de César")
@@ -135,7 +135,7 @@ class MainWindow(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = MainWindow()
+    window = CesarWindow()
     window.show()
     sys.exit(app.exec())
 
