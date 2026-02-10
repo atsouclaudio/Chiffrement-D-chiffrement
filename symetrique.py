@@ -19,11 +19,19 @@ class SymWindow(QWidget):
         layout.addStretch()
 
         header = QLabel("Choisissez un algorithme symétrique")
-        header.setStyleSheet("color: #4A148C; font-size: 18px; font-weight: bold;")
+        header.setStyleSheet("color: #4A148C; font-size: 30px; font-weight: bold;")
         header.setAlignment(Qt.AlignCenter)
         layout.addWidget(header)
 
         self.combo = QComboBox()
+        self.combo.setStyleSheet("""
+            QComboBox {
+                background-color: white;
+                border: 1px solid #D1C4E9;
+                border-radius: 10px;
+                padding: 5px 10px;
+                font-size: 16px;}
+                                 """)
         self.combo.addItems(["César", "AES", "DES"])
         layout.addWidget(self.combo, alignment=Qt.AlignCenter)
 
@@ -47,6 +55,7 @@ class SymWindow(QWidget):
             self.page = AESWindow()  # Assure-toi d'avoir une classe AESWindow définieg
         if choix == "DES":
             self.page = DESWindow()  # Assure-toi d'avoir une classe DESWindow définie
+        if choix == "":
             return
 
         self.page.show()

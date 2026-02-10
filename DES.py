@@ -22,7 +22,7 @@ class StyledCard(QFrame):
 class DESWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Chiffrement AES")
+        self.setWindowTitle("Chiffrement DES")
         self.resize(380, 650)
         self.setStyleSheet("background-color: #7E57C2;")
 
@@ -31,7 +31,7 @@ class DESWindow(QWidget):
         main_layout.setSpacing(15)
 
         # --- En(tête) ---
-        header_label = QLabel("Chiffrement AES")
+        header_label = QLabel("Chiffrement DES")
         header_label.setStyleSheet("color: white; font-size: 24px; font-weight: bold;")
         header_label.setAlignment(Qt.AlignCenter)
         main_layout.addWidget(header_label)
