@@ -2,7 +2,9 @@
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QComboBox, QPushButton
 from PySide6.QtCore import Qt
 
-# Import de ta fenêtre César
+# Import des fenêtres de chiffrement
+from AES import AESWindow
+from DES import DESWindow
 from cesar import CesarWindow  
 
 class SymWindow(QWidget):
@@ -35,14 +37,16 @@ class SymWindow(QWidget):
         choix = self.combo.currentText()
         if choix == "César":
             self.page = CesarWindow()   # Ouvre la fenêtre César
-        else:
+        #else:
             # Ici tu peux créer AESWindow ou DESWindow si tu les as
             # Exemple :
             # self.page = AESWindow()
             # ou self.page = DESWindow()
             #print(f"Fenêtre pour {choix} pas encore définie")
-            if choix == "AES":
-                self.page = AESWindow()  # Assure-toi d'avoir une classe AESWindow définieg
+        if choix == "AES":
+            self.page = AESWindow()  # Assure-toi d'avoir une classe AESWindow définieg
+        if choix == "DES":
+            self.page = DESWindow()  # Assure-toi d'avoir une classe DESWindow définie
             return
 
         self.page.show()
