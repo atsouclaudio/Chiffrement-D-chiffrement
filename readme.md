@@ -1,5 +1,5 @@
 Hey Welcome to our world!
-Bon voilà pour faire cours, comme à la cotumière, tu clone le repo grace au bouton vert "CODE" puis dans ton terminel tu vas dans le dossier ou te ve voir ton porjet naître et tu fait :"git clone nomDuRepositorie".
+Bon voilà pour faire cours, comme à la coutumière, tu clone le repo grace au bouton vert "CODE" puis dans ton terminel tu vas dans le dossier ou te ve voir ton porjet naître et tu fait :"git clone nomDuRepositorie".
 
 II/
 .Après le clonage du repo tu faits un python -m venv (nom de ta venv maintenant sans les parenthèse)
