@@ -3,18 +3,19 @@ from django.http import JsonResponse
 
 # Create your views here.
 
-
+# fonction de chiffrement par décalage
 def caesar_cipher(text, shift, mode="encode"):
     result = ""
     for char in text:
-        code = ord(char)  # code Unicode du caractère
+        code = ord(char)  
         if mode == "encode":
-            new_code = (code + shift) % 1114111  # plage Unicode max
+            new_code = (code + shift) % 1114111  
         else:  # decode
             new_code = (code - shift) % 1114111
         result += chr(new_code)
     return result
 
+#fonction pour l'API de chiffrement
 def cipher_api(request):
     text = request.GET.get("text", "")
     try:

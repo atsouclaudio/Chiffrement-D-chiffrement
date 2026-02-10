@@ -1,6 +1,6 @@
 import sys, json
 from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout,QTextEdit, QLabel, QFrame, QLineEdit, QPushButton, QGraphicsDropShadowEffect)
-from PySide6.QtCore import Qt, QUrl 
+from PySide6.QtCore import Qt, QUrl, QUrlQuery
 from PySide6.QtGui import QColor 
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkRequest 
 
@@ -29,13 +29,13 @@ class MainWindow(QWidget):
         main_layout.setContentsMargins(20, 40, 20, 20)
         main_layout.setSpacing(15)
 
-        # --- HEADER ---
+        # --- En(tête) ---
         header_label = QLabel("Chiffrement de César")
         header_label.setStyleSheet("color: white; font-size: 24px; font-weight: bold;")
         header_label.setAlignment(Qt.AlignCenter)
         main_layout.addWidget(header_label)
 
-        # --- INPUT ---
+        # --- Entre le text a coder ou à décoder ---
         input_card = StyledCard()
         input_layout = QVBoxLayout(input_card)
         input_title = QLabel("Texte à traiter")
@@ -54,7 +54,7 @@ class MainWindow(QWidget):
         input_layout.addWidget(self.input_text)
         main_layout.addWidget(input_card)
 
-        # --- SHIFT ---
+        # --- le décalage 3 pour le code de césar ---
         shift_card = StyledCard()
         shift_layout = QVBoxLayout(shift_card)
         shift_title = QLabel("Décalage")
@@ -73,7 +73,7 @@ class MainWindow(QWidget):
         shift_layout.addWidget(self.shift_input)
         main_layout.addWidget(shift_card)
 
-        # --- BUTTONS ---
+        # --- BUTTONS pour choisir le mode ---
         button_layout = QHBoxLayout()
         self.encode_button = QPushButton("Encoder")
         self.decode_button = QPushButton("Décoder")
@@ -82,7 +82,7 @@ class MainWindow(QWidget):
             button_layout.addWidget(btn)
         main_layout.addLayout(button_layout)
 
-        # --- RESULT ---
+        # --- Voici le RESULTAT ---
         result_card = StyledCard()
         result_layout = QVBoxLayout(result_card)
         result_title = QLabel("Résultat")
@@ -105,18 +105,30 @@ class MainWindow(QWidget):
 
         # --- NETWORK ---
         self.manager = QNetworkAccessManager()
-        self.manager.finished.connect(self.handle_response)
-        self.encode_button.clicked.connect(lambda: self.call_api("encode"))
-        self.decode_button.clicked.connect(lambda: self.call_api("decode"))
+        self.manager.finished.connect(self.RecupReponseEtAffichage)
+        self.encode_button.clicked.connect(lambda: self.appelDeLApi("encode"))
+        self.decode_button.clicked.connect(lambda: self.appelDeLApi("decode"))
 
-    def call_api(self, mode):
-        text = self.input_text.toPlainText()
-        shift = self.shift_input.text()
-        url = QUrl(f"http://127.0.0.1:8000/api/cipher/?text={text}&shift={shift}&mode={mode}")
-        request = QNetworkRequest(url)
+    # def appelDeLApi(self, mode):
+    #     text = self.input_text.toPlainText()
+    #     shift = self.shift_input.text()
+    #     url = QUrl(f"http://127.0.0.1:8000/api/cipher/?text={text}&shift={shift}&mode={mode}")
+    #     request = QNetworkRequest(url)
+    #     self.manager.get(request)
+
+    def appelDeLApi(self, mode): 
+        text = self.input_text.toPlainText() 
+        shift = self.shift_input.text() 
+        url = QUrl("http://127.0.0.1:8000/api/cipher/") 
+        query = QUrlQuery() 
+        query.addQueryItem("text", text) 
+        query.addQueryItem("shift", shift) 
+        query.addQueryItem("mode", mode) 
+        url.setQuery(query) 
+        request = QNetworkRequest(url) 
         self.manager.get(request)
 
-    def handle_response(self, reply):
+    def RecupReponseEtAffichage(self, reply):
         data = reply.readAll().data()
         result = json.loads(data.decode("utf-8"))
         self.output_text.setPlainText(result["result"])

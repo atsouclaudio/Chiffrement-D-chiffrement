@@ -25,7 +25,7 @@ class SymWindow(QWidget):
                 border: 1px solid #AB47BC;
                 border-radius: 10px;
                 padding: 8px;
-                background: white;
+                background: green;
                 font-size: 14px;
             }
             QComboBox:hover {
