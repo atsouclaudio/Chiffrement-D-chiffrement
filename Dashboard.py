@@ -22,7 +22,7 @@ class StyledCard(QFrame):
                 color: #4A148C;
             }}
         """)
-        shadow = QGraphicsDropShadowEffect(blurRadius=15, xOffset=0, yOffset=5)
+        shadow = QGraphicsDropShadowEffect(blurRadiusw=15, xOffset=0, yOffset=5)
         shadow.setColor(QColor(0, 0, 0, 40))
         self.setGraphicsEffect(shadow)
 
