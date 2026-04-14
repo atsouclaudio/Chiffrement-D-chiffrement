@@ -27,7 +27,8 @@ class SymWindow(QWidget):
         self.combo.setStyleSheet("""
             QComboBox {
                 background-color: white;
-                border: 1px solid #D1C4E9;
+                border: 1px solid #B25929;
+                color: #4A148C;
                 border-radius: 10px;
                 padding: 5px 10px;
                 font-size: 16px;}

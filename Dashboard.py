@@ -10,7 +10,7 @@ from symetrique import SymWindow
 from asymetrique import AsymWindow
 
 class StyledCard(QFrame):
-    def __init__(self, title, description, callback, color="#F8F4FF"):
+    def __init__(self, title, description, callback, color="#FFF8F4"):
         super().__init__()
         self.setStyleSheet(f"""
             QFrame {{
@@ -22,7 +22,7 @@ class StyledCard(QFrame):
                 color: #4A148C;
             }}
         """)
-        shadow = QGraphicsDropShadowEffect(blurRadiusw=15, xOffset=0, yOffset=5)
+        shadow = QGraphicsDropShadowEffect(blurRadius=15, xOffset=0, yOffset=5)
         shadow.setColor(QColor(0, 0, 0, 40))
         self.setGraphicsEffect(shadow)
 
@@ -37,7 +37,7 @@ class StyledCard(QFrame):
         btn.setStyleSheet("""
             QPushButton {
                 background-color: #7E57C2;
-                color: white;
+                color: #B25929;
                 border-radius: 10px;
                 padding: 8px 16px;
                 font-weight: bold;
@@ -64,7 +64,7 @@ class ChoiceWindow(QWidget):
         main_layout.setSpacing(25)
 
         header = QLabel("Sélectionnez votre type de chiffrement")
-        header.setStyleSheet("color: #311B92; font-size: 20px; font-weight: bold;")
+        header.setStyleSheet("color: #B25929; font-size: 20px; font-weight: bold;")
         header.setAlignment(Qt.AlignCenter)
         main_layout.addWidget(header)
 

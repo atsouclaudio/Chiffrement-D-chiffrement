@@ -3,7 +3,7 @@ from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout,Q
 from PySide6.QtCore import Qt, QUrl, QUrlQuery
 from PySide6.QtGui import QColor 
 from PySide6.QtNetwork import QNetworkAccessManager, QNetworkRequest 
-
+from PySide6.QtCore import QUrl, QUrlQuery
 class StyledCard(QFrame):
     def __init__(self):
         super().__init__()
@@ -44,9 +44,10 @@ class CesarWindow(QWidget):
         self.input_text.setPlaceholderText("Entrez votre texte ici...")
         self.input_text.setStyleSheet("""
             QTextEdit {
-                border: 1px solid #D1C4E9;
+                border: 1px solid #B25929;
+                color: #F3E5F5;
                 border-radius: 10px;
-                background: white;
+                background: #B25929;
                 padding: 10px;
             }
         """)
@@ -62,7 +63,7 @@ class CesarWindow(QWidget):
         self.shift_input = QLineEdit("3")
         self.shift_input.setStyleSheet("""
             QLineEdit {
-                border: 1px solid #D1C4E9;
+                border: 1px solid #B25929;
                 border-radius: 10px;
                 background: white;
                 height: 40px;
@@ -93,6 +94,7 @@ class CesarWindow(QWidget):
         self.output_text.setStyleSheet("""
             QTextEdit {
                 border: 1px solid #D1C4E9;
+                color: #7B1FA2;
                 border-radius: 10px;
                 background: #F3E5F5;
                 padding: 10px;
