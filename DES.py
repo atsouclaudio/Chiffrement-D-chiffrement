@@ -30,13 +30,11 @@ class DESWindow(QWidget):
         main_layout.setContentsMargins(20, 40, 20, 20)
         main_layout.setSpacing(15)
 
-        # --- En(tête) ---
         header_label = QLabel("Chiffrement DES")
         header_label.setStyleSheet("color: white; font-size: 24px; font-weight: bold;")
         header_label.setAlignment(Qt.AlignCenter)
         main_layout.addWidget(header_label)
 
-        # --- Entre le text a coder ou à décoder ---
         input_card = StyledCard()
         input_layout = QVBoxLayout(input_card)
         input_title = QLabel("Texte à traiter")
